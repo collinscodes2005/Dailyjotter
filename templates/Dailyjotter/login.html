@@ -9,22 +9,23 @@
 
 {% endblock %}
 {% block content %}
-
-
 <body>
-
 <section id="log">
    
-        <div>
+        <div class="sic">
             <form action="/" method="post">
                 {% csrf_token %}
+                <div class="form-group">
                 {% for field in form %}
-                    <div class="form-group">
+                    
                         <label for="{{ field.label_for }}">{{ field.label }}</label>
+                
                         {{ field }}
-                    </div>
+                        
+                   
                 {% endfor %}
-                <button type="submit">Submit</button>
+                <button class="submit" type="submit">Submit</button>
+            </div>
             </form>
         </div>
 
