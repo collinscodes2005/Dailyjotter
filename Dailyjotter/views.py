@@ -41,30 +41,48 @@ class SignUpView(View):
         return render(request, "Dailyjotter/sign-up.html", {'form': form})
 
     def post(self, request):
+        pass
 
+def SignUp(request):
+    logForm = LoginForm()
+    form = SignUpForm()
+    if request.method == "POST":
         form =  SignUpForm(request.POST)
         if form.is_valid():
-            usernames = Author.objects.values_list('username', flat=True)
-            username = form.cleaned_data.get('Username')
-            first_name = form.cleaned_data.get('Firstname')
-            surname = form.cleaned_data.get('Lastname')
-            password = form.cleaned_data.get('Password')
 
-            new_user = Author(username=username, first_name=first_name, surname=surname, password=password)
+
+            usernames = Author.objects.values_list('user_name', flat=True)
+            username = form.cleaned_data.get('username')
+            firstname = form.cleaned_data.get('first_name')
+            surname = form.cleaned_data.get('surname')
+            password = form.cleaned_data.get('password')
+
+            new_user = Author(first_name=firstname, surname=surname,user_name=username,  password=password)
 
 
             passwords = Author.objects.values_list('password', flat=True)
             password = form.cleaned_data.get('password')
-
+            
             if username in usernames and password in passwords :
                 print("Cant create account ")
+                return render(request, "Dailyjotter/sign-up.html", {'form' : form,
+                'err' : "user exists "})
+
             else :
                 new_user.save()
-                return HttpResponse("User Saved")
+                return render(request, "Dailyjotter/login.html", { 'form' : logForm,
+                'success': "User created, login now"
+                })
+                
+        else:
+        # handle invalid form
+            return render(request, "Dailyjotter/sign-up.html", {'form' : form, 'err' : "Form is invalid"})
+    # else:
+    #     form = SignUpForm()          
 
 
 
-        return render(request, "Dailyjotter/sign-up.html", {'form' : form})
+    return render(request, "Dailyjotter/sign-up.html", {'form' : form})
                 
 
 

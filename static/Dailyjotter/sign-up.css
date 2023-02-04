@@ -15,7 +15,10 @@ label {
     font-family: 'Itim', cursive;
     margin-bottom: 0.5rem;
 }
-
+h3{
+    font-family: "Itim", cursive;
+    color: red;
+}
 input, select, textarea {
     padding: 0.5rem;
     font-size: 1rem;

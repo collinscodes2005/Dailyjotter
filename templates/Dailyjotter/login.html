@@ -18,6 +18,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <h3>{{message}}</h3>
+                    <h3>{{success}}</h3>
 
                 {% for field in form %}
                     
@@ -28,6 +29,8 @@
                    
                 {% endfor %}
                 <button class="submit" type="submit">Submit</button>
+
+                <h4>Don't have an account?<a href="/signup/">Signup</h4>
             </div>
             </form>
         </div>

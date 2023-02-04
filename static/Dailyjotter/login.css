@@ -12,15 +12,22 @@
 }
 label {
     font-weight: bold;
-    font-family: 'Itim', cursive;
+    font-family: math;
     margin-bottom: 0.5rem;
 }
 
 h3{
-    font-family:'Itim', cursive;
+    font-family:math;
     font-weight: 300;
     font-style: bold;
     color: red;
+}
+h4{
+    font-family: 'math', cursive;
+
+}
+a{
+    color: midnightblue;
 }
 input, select, textarea {
     padding: 0.5rem;
