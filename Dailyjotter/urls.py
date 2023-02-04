@@ -5,6 +5,8 @@ urlpatterns = [
     path('', views.IndexPageView.as_view()),
     path('login/', views.LoginView.as_view()),
     path('create-post/', views.CreatePostView.as_view()),
+    path('sign-up/', views.signUpView.as_view()),
+    
     
 ]
 
