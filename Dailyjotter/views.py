@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from .models import Author,Post
 from .forms import PostForm, LoginForm, SignUpForm
+
 
 # Create your views here.
 class IndexPageView(View):
@@ -31,19 +32,18 @@ class LoginView(View):
 
             if username in usernames:
                 # code to log the user in
-                return render(request, "Dailyjotter/create_post.html")
-                pass
+                return HttpResponse("Logged in")
 
             else:
                 # code to return an error message
-                pass
+                return HttpResponse("Not logged , wrong credentials ")
         
     
             return HttpResponseRedirect("/thank-you")
 
         return render(request, "Dailyjotter/login.html", { 'form' : form})
 
-class signUpView(View):
+class SignUpView(View):
     def get(self, request):
         form = SignUpForm()
         return render(request, "Dailyjotter/sign-up.html", {'form': form})
@@ -68,8 +68,11 @@ class signUpView(View):
                 print("Cant create account ")
             else :
                 new_user.save()
+                return HttpResponse("User Saved")
 
-            return render(request, "Dailyjotter/sign-up.html", {'form' : form})
+
+
+        return render(request, "Dailyjotter/sign-up.html", {'form' : form})
                 
 
 
