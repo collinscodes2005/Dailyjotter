@@ -13,9 +13,12 @@
 <section id="log">
    
         <div class="sic">
-            <form action="/" method="post">
+           
+            <form action="/login/" method="post">
                 {% csrf_token %}
                 <div class="form-group">
+                    <h3>{{message}}</h3>
+
                 {% for field in form %}
                     
                         <label for="{{ field.label_for }}">{{ field.label }}</label>

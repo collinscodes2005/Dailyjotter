@@ -1,47 +1,39 @@
 from django.shortcuts import render
 from django.views import View
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Author,Post
 from .forms import PostForm, LoginForm, SignUpForm
 
 
 # Create your views here.
-class IndexPageView(View):
-    def get(self, request):
-        return render(request, "Dailyjotter/base.html")
-    def post(self, request):
+def indexPage(request):
        return render(request, "Dailyjotter/base.html")
 
 
-class LoginView(View):
-   
-
-    def get(self, request):
-        form = LoginForm()
-        return render(request, "Dailyjotter/login.html", { 'form' : form})
-
-
-    def post(Self, request):
-
+def loginView(request):
+   form = LoginForm() 
+   if request.method == "POST":
         form = LoginForm(request.POST)
-
         if form.is_valid():
 
-            usernames = Author.objects.values_list('username', flat=True)
+            usernames = Author.objects.values_list('user_name', flat=True)
             username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
 
-            if username in usernames:
-                # code to log the user in
-                return HttpResponse("Logged in")
+            user = authenticate(user_name=username)
 
+            if Author.objects.filter(user_name=username).exists() and Author.objects.filter(password=password).exists():
+                # username already exists
+                return render(request, "Dailyjotter/main-page.html")
             else:
-                # code to return an error message
-                return HttpResponse("Not logged , wrong credentials ")
-        
-    
-            return HttpResponseRedirect("/thank-you")
+                context = { 'message' : "User not found, Please retry",
+                            'form' : form}
+                return render(request, "Dailyjotter/login.html", context)
 
-        return render(request, "Dailyjotter/login.html", { 'form' : form})
+   return render(request, "Dailyjotter/login.html", { 'form' : form})
+
+
 
 class SignUpView(View):
     def get(self, request):
