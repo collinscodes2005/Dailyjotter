@@ -1,0 +1,35 @@
+{% extends "./base.html" %}
+{%load static %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static "Dailyjotter/main-page.css" %}">
+
+{% endblock %}
+{% block content%}
+<body>
+ <section>
+    <nav >
+        <button id="hamburger-menu-button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul id="navigation">
+            <div class="img">
+                <img src="">
+            </div>
+          <li><a href="#">My Profile</a></li>
+          <li><a href="#">about me</a></li>
+          <li><a href="#">settings</a></li>
+        </ul>
+      </nav>
+    </section>
+
+ 
+<body>
+{% block js_files %}
+
+    <script src="{% static "Dailyjotter/index.js" %}"></script>   
+
+{% endblock %}
+    
+{% endblock %}
