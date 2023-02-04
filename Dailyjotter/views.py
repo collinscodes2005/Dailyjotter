@@ -73,7 +73,7 @@ def SignUp(request):
                 return render(request, "Dailyjotter/login.html", { 'form' : logForm,
                 'success': "User created, login now"
                 })
-                
+
         else:
         # handle invalid form
             return render(request, "Dailyjotter/sign-up.html", {'form' : form, 'err' : "Form is invalid"})
@@ -81,17 +81,7 @@ def SignUp(request):
     #     form = SignUpForm()          
 
 
+def main(request):
 
-    return render(request, "Dailyjotter/sign-up.html", {'form' : form})
-                
-
-
-    
-
-class CreatePostView(View):
-    def get(self, request):
-        pass
-    def post(self, request):
-        pass
-
+    latest_posts =  Post.objects.all().order_by("-date")[:3]
 
