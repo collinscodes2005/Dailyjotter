@@ -7,7 +7,7 @@ class Author(models.Model):
     surname = models.CharField(max_length=120)
     user_name = models.CharField(max_length=300)
     password = models.CharField(max_length=400)
-    
+
     def __str__(self):
         return f"{self.first_name}{ self.surname } "
 
@@ -20,7 +20,7 @@ def image(instance, filename):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     excerpt = models.CharField(max_length=200)
-    image = models.ImageField(upload_to=image)
+    image = models.ImageField(upload_to="posts", null=True)
     content = models.TextField(max_length=400)
     slug = models.SlugField(unique=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)

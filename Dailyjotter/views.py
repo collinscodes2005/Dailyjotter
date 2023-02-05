@@ -26,6 +26,7 @@ def loginView(request):
             if Author.objects.filter(user_name=username).exists() and Author.objects.filter(password=password).exists():
                 # username already exists
                 return render(request, "Dailyjotter/main-page.html")
+                
             else:
                 context = { 'message' : "User not found, Please retry",
                             'form' : form}
@@ -79,9 +80,11 @@ def SignUp(request):
             return render(request, "Dailyjotter/sign-up.html", {'form' : form, 'err' : "Form is invalid"})
     # else:
     #     form = SignUpForm()          
-
+    return render(request, "Dailyjotter/sign-up.html", {'form' : form})
 
 def main(request):
 
     latest_posts =  Post.objects.all().order_by("-date")[:3]
+
+    return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
 
