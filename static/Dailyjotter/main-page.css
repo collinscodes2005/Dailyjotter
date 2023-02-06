@@ -1,5 +1,5 @@
 body{
-    margin: auto;
+    margin: 0;
 }
 
 button#hamburger-menu-button {
@@ -36,4 +36,8 @@ button#hamburger-menu-button {
   
   #navigation li{
   margin: 8px 0;
+}
+
+#all-posts{
+  list-style: none;
 }

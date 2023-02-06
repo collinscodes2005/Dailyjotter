@@ -88,3 +88,5 @@ def main(request):
 
     return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
 
+def create_post(request):
+    pass

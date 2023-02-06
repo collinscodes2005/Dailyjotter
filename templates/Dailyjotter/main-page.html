@@ -18,16 +18,19 @@
             <div class="img">
                 <img src="">
             </div>
+            <li><a href="{% url 'create-post' %}">Create Post </a></li>
           <li><a href="#">My Profile</a></li>
           <li><a href="#">about me</a></li>
+          
           <li><a href="#">settings</a></li>
         </ul>
       </nav>
     </section>
 
     <section id="all-posts">
-        <h2>My Collected Posts</h2>
-        <ul>
+        <h2>Todays Posts</h2>
+        <ul style="
+        list-style: none">
             {% for post in posts %}
 
                {% include "includes/post.html" %}
