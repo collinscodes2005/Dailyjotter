@@ -26,6 +26,9 @@ def loginView(request):
 
             user = authenticate(user_name=username)
 
+            
+
+
             if Author.objects.filter(user_name=username).exists() and Author.objects.filter(password=password).exists():
                 # username already exists
                 return render(request, "Dailyjotter/main-page.html")
@@ -95,8 +98,16 @@ def create_post(request):
     form = PostForm()
     if request.method == "POST":
         form = PostForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data.get('title')
+            keynote = form.cleaned_data.get('excerpt')
+            image = form.cleaned_data.get('image')
+            content = form.cleaned_data.get('content')
+
+            new_post = Post(title=title, excerpt=keynote, image=image)
+
+            
     else :
         form = PostForm()
 
     return render(request, "Dailyjotter/create-post.html", {'form' : form })
-    
