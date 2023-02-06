@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
     
     class Meta:
         model = Post
-        fields = "__all__"
+        fields = ['title', 'excerpt', 'image', 'content', ]
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter title'}),
             'excerpt': TextInput(attrs={'placeholder': 'Enter excerpt'}),

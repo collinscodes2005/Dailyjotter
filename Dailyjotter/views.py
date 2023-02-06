@@ -6,9 +6,12 @@ from .models import Author,Post
 from .forms import PostForm, LoginForm, SignUpForm
 
 
+
 # Create your views here.
 def indexPage(request):
-       return render(request, "Dailyjotter/base.html")
+
+
+       return render(request, "Dailyjotter/index.html")
 
 
 def loginView(request):
@@ -89,4 +92,11 @@ def main(request):
     return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
 
 def create_post(request):
-    pass
+    form = PostForm()
+    if request.method == "POST":
+        form = PostForm(request.POST)
+    else :
+        form = PostForm()
+
+    return render(request, "Dailyjotter/create-post.html", {'form' : form })
+    
