@@ -24,19 +24,19 @@
         </ul>
       </nav>
     </section>
-<section>
 
-    {% for post in posts %}
+    <section id="all-posts">
+        <h2>My Collected Posts</h2>
+        <ul>
+            {% for post in posts %}
 
-        {{post.author}}
+               {% include "includes/post.html" %}
 
-        <img src="{{ post.image.url }}" alt="{{ post.title }}" />
-
-    {% endfor %}
-
-
-</section>
- 
+            
+            {% endfor %}
+        </ul>
+      </section>
+    
 <body>
 {% block js_files %}
 

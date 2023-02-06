@@ -2,21 +2,26 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static "post.css" %}">
+
+{{ post.title }}
 <li>
     <article class="post">
-        <a href="{% url 'post-detail' post.slug %}">
+
+      
             <img src="{{ post.image.url }}" alt="mountain">
             
             <div class="post_content">
+
                 <h3>{{ post.title }}</h3><br>
+                <img src="{ post.image.url }" alt="{ post.title }"/>
                 <h4>{{ post.date }}</h4>
                 <p>
                    {{post.excerpt}}
                 </p>
                 <h4>{{post.author.first_name}}</h4>
 
-
             </div>
         </a>
     </article>
 </li>
+
