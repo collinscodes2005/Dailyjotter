@@ -103,7 +103,7 @@ def create_post(request):
     
     form = PostForm()
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
 
                     author_id = request.session.get('author_id')
@@ -111,27 +111,23 @@ def create_post(request):
                     author = Author.objects.get(id=author_id)
                     title = form.cleaned_data.get('title')
                     keynote = form.cleaned_data.get('excerpt')
-                    image = form.cleaned_data.get('image')
+                    imager = form.cleaned_data.get('image')
                     content = form.cleaned_data.get('content')
                    
                     original_slug = slugify(title)
                     unique_slug = original_slug
                     count = 1
+
                     while Post.objects.filter(slug=unique_slug).exists():
                         unique_slug = f'{original_slug}-{count}'
                         count += 1
 
-            # new_post = Post(title=title, excerpt=keynote, image=image, content=content, author=request.user)
-            # new_post.save()
-         
-                    new_post = Post(title=title, excerpt=keynote, image=image, content=content, author=author, slug=unique_slug)
+                    new_post = form.save(commit=False) 
+                    new_post.author = author
+                    new_post.image = form.cleaned_data['image']
+                    new_post.slug = unique_slug
                     print("jeeezzz")
                     new_post.save()
-                    # return HttpResponseRedirect("/home")  # Redirect to main page after saving post
-            #    else:
-            #     # handle case where user is not authenticated
-            #     print("shittt")
-            #     return HttpResponse("You must be logged in to create a post")
 
 
             

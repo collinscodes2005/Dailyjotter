@@ -9,6 +9,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 
+
 admin.site.register(Author)
 admin.site.register(Post, PostAdmin)
 
