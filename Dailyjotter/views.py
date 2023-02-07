@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Author,Post
 from .forms import PostForm, LoginForm, SignUpForm
+from django.utils.text import slugify
+
 
 latest_posts =  Post.objects.all().order_by("-date")[:3]
 
@@ -111,11 +113,18 @@ def create_post(request):
                     keynote = form.cleaned_data.get('excerpt')
                     image = form.cleaned_data.get('image')
                     content = form.cleaned_data.get('content')
+                   
+                    original_slug = slugify(title)
+                    unique_slug = original_slug
+                    count = 1
+                    while Post.objects.filter(slug=unique_slug).exists():
+                        unique_slug = f'{original_slug}-{count}'
+                        count += 1
 
             # new_post = Post(title=title, excerpt=keynote, image=image, content=content, author=request.user)
             # new_post.save()
          
-                    new_post = Post(title=title, excerpt=keynote, image=image, content=content, author=author)
+                    new_post = Post(title=title, excerpt=keynote, image=image, content=content, author=author, slug=unique_slug)
                     print("jeeezzz")
                     new_post.save()
                     # return HttpResponseRedirect("/home")  # Redirect to main page after saving post

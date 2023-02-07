@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 # Create your models here.
 '''The Author model '''
@@ -22,7 +23,7 @@ class Post(models.Model):
     excerpt = models.CharField(max_length=200)
     image = models.ImageField(upload_to="posts", null=True, blank=True)
     content = models.TextField(max_length=400)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, default=uuid.uuid1, editable=False)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
 

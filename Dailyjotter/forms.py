@@ -12,6 +12,7 @@ class PostForm(forms.ModelForm):
             'title': TextInput(attrs={'placeholder': 'Enter title'}),
             'excerpt': TextInput(attrs={'placeholder': 'Enter excerpt'}),
         }
+        exclude = ('slug',)
 
 '''Login form '''
 class LoginForm(forms.Form):
