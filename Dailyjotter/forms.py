@@ -19,6 +19,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
 
+
 '''Sign up form '''
 class SignUpForm(forms.Form):
     first_name = forms.CharField(label="Firstname", max_length=200)

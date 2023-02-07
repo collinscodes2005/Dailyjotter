@@ -20,7 +20,7 @@ def image(instance, filename):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     excerpt = models.CharField(max_length=200)
-    image = models.ImageField(upload_to="posts", null=True)
+    image = models.ImageField(upload_to="posts", null=True, blank=True)
     content = models.TextField(max_length=400)
     slug = models.SlugField(unique=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)

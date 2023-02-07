@@ -1,11 +1,12 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Author,Post
 from .forms import PostForm, LoginForm, SignUpForm
 
-
+latest_posts =  Post.objects.all().order_by("-date")[:3]
 
 # Create your views here.
 def indexPage(request):
@@ -23,15 +24,15 @@ def loginView(request):
             usernames = Author.objects.values_list('user_name', flat=True)
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-
-            user = authenticate(user_name=username)
-
             
-
 
             if Author.objects.filter(user_name=username).exists() and Author.objects.filter(password=password).exists():
                 # username already exists
-                return render(request, "Dailyjotter/main-page.html")
+                author = Author.objects.filter(user_name=username, password=password).first()
+
+                request.session['author_id'] = author.id
+
+                return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
                 
             else:
                 context = { 'message' : "User not found, Please retry",
@@ -94,20 +95,41 @@ def main(request):
 
     return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
 
+
 def create_post(request):
+
+    
     form = PostForm()
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            title = form.cleaned_data.get('title')
-            keynote = form.cleaned_data.get('excerpt')
-            image = form.cleaned_data.get('image')
-            content = form.cleaned_data.get('content')
 
-            new_post = Post(title=title, excerpt=keynote, image=image)
+                    author_id = request.session.get('author_id')
+
+                    author = Author.objects.get(id=author_id)
+                    title = form.cleaned_data.get('title')
+                    keynote = form.cleaned_data.get('excerpt')
+                    image = form.cleaned_data.get('image')
+                    content = form.cleaned_data.get('content')
+
+            # new_post = Post(title=title, excerpt=keynote, image=image, content=content, author=request.user)
+            # new_post.save()
+         
+                    new_post = Post(title=title, excerpt=keynote, image=image, content=content, author=author)
+                    print("jeeezzz")
+                    new_post.save()
+                    # return HttpResponseRedirect("/home")  # Redirect to main page after saving post
+            #    else:
+            #     # handle case where user is not authenticated
+            #     print("shittt")
+            #     return HttpResponse("You must be logged in to create a post")
+
 
             
-    else :
-        form = PostForm()
-
+        else :
+          print("damnnnn!!")
+          print("Form errors:", form.errors)
+          form = PostForm()
+    else:
+        print("shitttttttt")
     return render(request, "Dailyjotter/create-post.html", {'form' : form })
