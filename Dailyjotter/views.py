@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.contrib.auth import authenticate, login
@@ -14,7 +14,7 @@ latest_posts =  Post.objects.all().order_by("-date")[:3]
 def indexPage(request):
 
 
-       return render(request, "Dailyjotter/index.html")
+       return render(request, "Dailyjotter/login.html")
 
 
 def loginView(request):
@@ -129,6 +129,8 @@ def create_post(request):
                     print("jeeezzz")
                     new_post.save()
 
+                    return redirect('home')
+
 
             
         else :
@@ -138,3 +140,6 @@ def create_post(request):
     else:
         print("shitttttttt")
     return render(request, "Dailyjotter/create-post.html", {'form' : form })
+
+def Profile(request):
+    pass
