@@ -1,0 +1,35 @@
+.profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .profile-picture {
+    flex-shrink: 0; /* prevent picture from shrinking */
+    margin-right: 20px;
+  }
+  
+  .profile-picture img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .profile-info {
+    flex-grow: 1; /* allow info to grow */
+  }
+  
+  @media (max-width: 600px) {
+    /* change flex direction to column on smaller screens */
+    .profile {
+      flex-direction: column;
+    }
+    
+    .profile-picture {
+      margin-right: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  }
+  

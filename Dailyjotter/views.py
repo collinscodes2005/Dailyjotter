@@ -142,4 +142,4 @@ def create_post(request):
     return render(request, "Dailyjotter/create-post.html", {'form' : form })
 
 def Profile(request):
-    pass
+    return render(request, "Dailyjotter/profile.html")

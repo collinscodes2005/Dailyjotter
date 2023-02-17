@@ -3,13 +3,23 @@
 
 {% block css_files %}
 
+<link rel="stylesheet" href="{% static "Dailyjotter/profile.css" %}">
 {% endblock %}
 
 {% block content%}
 <body>
     <section>
         <nav>
-
+            <div class="profile">
+                <div class="profile-picture">
+                  <img src="https://via.placeholder.com/150" alt="Profile picture">
+                </div>
+                <div class="profile-info">
+                  <h2>John Doe</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum vitae eros ac dictum.</p>
+                </div>
+              </div>
+              
         </nav>
     </section>
 {% endblock %}
