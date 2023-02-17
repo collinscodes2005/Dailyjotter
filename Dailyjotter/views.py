@@ -32,7 +32,10 @@ def loginView(request):
                 # username already exists
                 author = Author.objects.filter(user_name=username, password=password).first()
 
-                request.session['author_id'] = author.id
+                authored = Author.objects.get(id=author.id)
+
+                    #creating author session 
+                request.session['author'] = author.id
 
                 return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
                 
@@ -109,6 +112,10 @@ def create_post(request):
                     author_id = request.session.get('author_id')
 
                     author = Author.objects.get(id=author_id)
+
+                    #creating author session 
+                    request.session['author'] = author
+
                     title = form.cleaned_data.get('title')
                     keynote = form.cleaned_data.get('excerpt')
                     imager = form.cleaned_data.get('image')
@@ -139,7 +146,16 @@ def create_post(request):
           form = PostForm()
     else:
         print("shitttttttt")
+
     return render(request, "Dailyjotter/create-post.html", {'form' : form })
 
 def Profile(request):
-    return render(request, "Dailyjotter/profile.html")
+
+    author_id =  request.session.get('author')
+    author = Author.objects.get(id=author_id)
+
+
+    return render(request, "Dailyjotter/profile.html", {
+        'author' : author
+    })
+
