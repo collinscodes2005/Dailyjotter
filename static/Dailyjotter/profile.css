@@ -20,6 +20,19 @@
     flex-grow: 1; /* allow info to grow */
   }
   
+
+  .edit{
+    background-color: skyblue;
+  border: none;
+  border-radius: 50%;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  }
   @media (max-width: 600px) {
     /* change flex direction to column on smaller screens */
     .profile {

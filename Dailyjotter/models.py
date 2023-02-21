@@ -12,7 +12,7 @@ class Author(models.Model):
 
 
     def __str__(self):
-        return f"{self.first_name}{ self.surname } "
+        return f"{self.first_name}  { self.surname } "
 
 
 def image(instance, filename):
@@ -35,4 +35,5 @@ class Post(models.Model):
     class Meta:
         verbose_name = "Post"
         verbose_name_plural = "Posts"
+
 
