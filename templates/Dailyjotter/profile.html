@@ -4,7 +4,7 @@
 {% block css_files %}
 
 <link rel="stylesheet" href="{% static "Dailyjotter/profile.css" %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 {% endblock %}
 
@@ -16,10 +16,10 @@
                 <div class="profile-picture">
                     <img src="{{ author.image.url }}" alt="Profile picture">
                 </div>
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" action="{% url 'update_profile_image' %}">
                     {% csrf_token %}
-                    <label for="id_image">
-                        <button class="edit">+</button>
+                    <label for="id_image" class="edit-label">
+                        <button type="button" class="edit">+</button>
                     </label>
                     <input type="file" name="image" id="id_image" style="display: none">
                     <div class="profile-info">
@@ -29,9 +29,13 @@
                     <button type="submit">Update Profile Picture</button>
                 </form>
             </div>
-              <div><center>
-                
-              
         </nav>
     </section>
+</body>
+{% block js_files %}
+
+    <script src="{% static "Dailyjotter/profile.js" %}"></script>   
+
+{% endblock %}
+
 {% endblock %}

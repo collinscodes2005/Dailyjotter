@@ -107,7 +107,7 @@ def create_post(request):
     form = PostForm()
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
+        if form.is_valid(): 
 
                     author_id = request.session.get('author_id')
 
@@ -127,7 +127,7 @@ def create_post(request):
 
                     while Post.objects.filter(slug=unique_slug).exists():
                         unique_slug = f'{original_slug}-{count}'
-                        count += 1
+                        count += 1 
 
                     new_post = form.save(commit=False) 
                     new_post.author = author
@@ -159,3 +159,14 @@ def Profile(request):
         'author' : author
     })
 
+
+def update_profile_image(request):
+    if request.method == 'POST':
+        author_id =  request.session.get('author')
+        author = Author.objects.get(id=author_id)
+        if 'image' in request.FILES:
+            author.image = request.FILES['image']
+            author.save()
+        return redirect('Profile')  # replace 'profile' with the name of your profile view
+    else:
+        return redirect('Profile')  # replace 'profile' with the name of your profile view
