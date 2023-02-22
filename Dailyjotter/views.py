@@ -69,8 +69,9 @@ def SignUp(request):
             firstname = form.cleaned_data.get('first_name')
             surname = form.cleaned_data.get('surname')
             password = form.cleaned_data.get('password')
+            bio = form.cleaned_data.get('bio')
 
-            new_user = Author(first_name=firstname, surname=surname,user_name=username,  password=password)
+            new_user = Author(first_name=firstname, surname=surname,user_name=username,  password=password, about=bio)
 
 
             passwords = Author.objects.values_list('password', flat=True)
@@ -160,13 +161,15 @@ def Profile(request):
     })
 
 
+'''fuction to edit profile images '''
 def update_profile_image(request):
     if request.method == 'POST':
         author_id =  request.session.get('author')
         author = Author.objects.get(id=author_id)
+
         if 'image' in request.FILES:
             author.image = request.FILES['image']
             author.save()
-        return redirect('Profile')  # replace 'profile' with the name of your profile view
+        return redirect('Profile')  
     else:
-        return redirect('Profile')  # replace 'profile' with the name of your profile view
+        return redirect('Profile')  

@@ -8,7 +8,7 @@ urlpatterns = [
     path('home', views.main, name="home"),
     path('create-post/', views.create_post, name="create-post"),
     path('signup/', views.SignUp),
-    path('profile/', views.Profile),
+    path('profile/', views.Profile, name="Profile"),
     path('update_profile_image/', views.update_profile_image, name='update_profile_image'),
 ]
 

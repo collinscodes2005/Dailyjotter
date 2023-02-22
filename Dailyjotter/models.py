@@ -9,6 +9,8 @@ class Author(models.Model):
     user_name = models.CharField(max_length=300)
     password = models.CharField(max_length=400)
     image = models.ImageField(upload_to="posts", null=True, blank=True)
+    about = models.CharField(max_length=170, null=True)
+
 
 
     def __str__(self):

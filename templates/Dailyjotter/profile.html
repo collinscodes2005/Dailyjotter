@@ -14,19 +14,25 @@
         <nav>
             <div class="profile">
                 <div class="profile-picture">
-                    <img src="{{ author.image.url }}" alt="Profile picture">
+                    {% if author.image %}
+                       <img src="{{ author.image.url }}" alt="Profile picture">
+                    {% else %}
+                        <h4>No image</h4>
+                    {% endif %}
                 </div>
                 <form method="post" enctype="multipart/form-data" action="{% url 'update_profile_image' %}">
                     {% csrf_token %}
+                    <center>
                     <label for="id_image" class="edit-label">
-                        <button type="button" class="edit">+</button>
+                        <button type="button" class="edit">+new</button>
                     </label>
                     <input type="file" name="image" id="id_image" style="display: none">
+                    <button class="update-profile" type="submit">Update Profile Picture</button>
+                    </center>
                     <div class="profile-info">
                         <h2>{{author}}</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum vitae eros ac dictum.</p>
+                        <p>{{author.about}}</p>
                     </div>
-                    <button type="submit">Update Profile Picture</button>
                 </form>
             </div>
         </nav>
