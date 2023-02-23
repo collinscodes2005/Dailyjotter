@@ -110,12 +110,12 @@ def create_post(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid(): 
 
-                    author_id = request.session.get('author_id')
+                    author_id = request.session.get('author')
 
                     author = Author.objects.get(id=author_id)
 
                     #creating author session 
-                    request.session['author'] = author
+                 #   request.session['author'] = author
 
                     title = form.cleaned_data.get('title')
                     keynote = form.cleaned_data.get('excerpt')
