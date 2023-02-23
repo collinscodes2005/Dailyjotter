@@ -97,7 +97,17 @@ def SignUp(request):
 
 def main(request):
 
+    latest_posts =  Post.objects.all().order_by("-id")[:3]
+    print(len(latest_posts))
+
+    return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
+
+
+
+def test_main(request):
+
     latest_posts =  Post.objects.all().order_by("-date")[:3]
+    print(len(latest_posts))
 
     return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
 
