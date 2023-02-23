@@ -8,7 +8,7 @@ from .forms import PostForm, LoginForm, SignUpForm
 from django.utils.text import slugify
 
 
-latest_posts =  Post.objects.all().order_by("-date")[:3]
+latest_posts =  Post.objects.all().order_by("-id")[:7]
 
 # Create your views here.
 def indexPage(request):
@@ -97,8 +97,8 @@ def SignUp(request):
 
 def main(request):
 
-    latest_posts =  Post.objects.all().order_by("-id")[:3]
-    print(len(latest_posts))
+    latest_posts =  Post.objects.all().order_by("-id")[:7]
+    print(latest_posts)
 
     return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
 
