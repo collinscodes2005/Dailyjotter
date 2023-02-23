@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+}
+
+button#hamburger-menu-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  button#hamburger-menu-button span {
+    display: block;
+    height: 2px;
+    width: 24px;
+    background-color: #000;
+    margin: 4px 0;
+  }
+  
+  #navigation {
+    display: none;
+  }
+  
+  #navigation.show {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    background-color: rgba(205, 193, 193, 0.499);
+    list-style: none;
+    padding: 16px;
+  }
+  
+  #navigation li{
+  margin: 8px 0;
+}
+
+#all-posts{
+  list-style: none;
+}
