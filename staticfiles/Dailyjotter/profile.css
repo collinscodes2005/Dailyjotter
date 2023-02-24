@@ -46,6 +46,11 @@
     transition: background-color 0.3s;
   }
   
+.back{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
   .update-profile:hover {
     background-color: skyblue;
   }

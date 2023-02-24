@@ -161,7 +161,7 @@ def create_post(request):
                     print("Save successful ")
                     new_post.save()
                     return redirect("home")
-                    
+
         else :
           print("damnnnn!!")
           print("Form errors:", form.errors)
@@ -191,6 +191,8 @@ def update_profile_image(request):
         if author.image_url:
             public_id = author.image_url.split('/')[-1].split('.')[0] # Extract public ID from URL
             cloudinary.uploader.destroy(public_id)
+            print("trying to delete")
+
 
 
         if 'image' in request.FILES:
