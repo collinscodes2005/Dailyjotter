@@ -160,9 +160,8 @@ def create_post(request):
                     new_post.slug = unique_slug
                     print("Save successful ")
                     new_post.save()
-
-
-                    image_url = response['secure_url']
+                    return redirect("home")
+                    
         else :
           print("damnnnn!!")
           print("Form errors:", form.errors)
@@ -188,6 +187,10 @@ def update_profile_image(request):
     if request.method == 'POST':
         author_id =  request.session.get('author')
         author = Author.objects.get(id=author_id)
+
+        if author.image_url:
+            public_id = author.image_url.split('/')[-1].split('.')[0] # Extract public ID from URL
+            cloudinary.uploader.destroy(public_id)
 
 
         if 'image' in request.FILES:
