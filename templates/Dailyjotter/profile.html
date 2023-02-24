@@ -14,8 +14,8 @@
         <nav>
             <div class="profile">
                 <div class="profile-picture">
-                    {% if author.image %}
-                       <img src="{{ author.image.url }}" alt="Profile picture">
+                    {% if author.image_url %}
+                       <img src="{{ author.image_url }}" alt="Profile picture">
                     {% else %}
                         <h4>No image</h4>
                     {% endif %}

@@ -186,8 +186,11 @@ def update_profile_image(request):
         author_id =  request.session.get('author')
         author = Author.objects.get(id=author_id)
 
+
         if 'image' in request.FILES:
-            author.image = request.FILES['image']
+            image = request.FILES['image']
+            response = cloudinary.uploader.upload(image, public_id=f'images/{author.id}_{image.name}')
+            author.image_url = response['secure_url']
             author.save()
         return redirect('Profile')  
     else:
