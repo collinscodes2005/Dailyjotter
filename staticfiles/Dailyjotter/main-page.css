@@ -23,7 +23,11 @@ button#hamburger-menu-button {
   #navigation {
     display: none;
   }
-  
+  .img{
+    border-radius: 50px;
+    height: 200px;
+    width: 120px;
+  }
   #navigation.show {
     display: block;
     position: absolute;

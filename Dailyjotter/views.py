@@ -113,9 +113,13 @@ def SignUp(request):
 def main(request):
 
     latest_posts =  Post.objects.all().order_by("-id")[:7]
+    author_id = request.session.get('author')
+    live_author = Author.objects.get(id=author_id)
     print(latest_posts)
 
-    return render(request, "Dailyjotter/main-page.html", { 'posts' : latest_posts})
+    context =  { 'posts' : latest_posts,
+                'author' : live_author}
+    return render(request, "Dailyjotter/main-page.html", context=context)
 
 
 
@@ -151,9 +155,8 @@ def create_post(request):
                  
                     new_post = form.save(commit=False) 
                     new_post.author = author
-                    new_post.save()
                     response = cloudinary.uploader.upload(image, public_id=f'images/{new_post.id}_{image.name}')
-                    new_post.image_url = response['url']
+                    new_post.image_url = response['secure_url']
                     new_post.slug = unique_slug
                     print("Save successful ")
                     new_post.save()
