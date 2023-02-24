@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import dj_database_url
 import os 
-
+import dropbox
+from django.conf import settings
 from pathlib import Path
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,6 +129,8 @@ USE_I18N = True
 USE_TZ = True
 
 
+DROPBOX_ACCESS_TOKEN  = 'sl.BZaGseVgbNG6oZEIJzjAGkSDSNQea-UtsZ0HqqdFZid9lEvPlZ5sPmVNtRLCN0HoTSFTA_cXeoiwXfIBYjJ22ufrN8GLKRgGhICygNLS1pqWctjc2Lgm2feJeD0EfJgFZb851-O0'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -135,7 +141,6 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 MEDIA_ROOT = BASE_DIR / "uploads"
 MEDIA_URL = "/files/"

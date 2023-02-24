@@ -4,10 +4,12 @@ from django.forms.models import ModelForm
 from .models import Author,Post
 
 class PostForm(forms.ModelForm):
+    image = forms.FileField(label='Image', required=False)
     
     class Meta:
         model = Post
-        fields = ['title', 'excerpt', 'image', 'content', ]
+        fields = ['title', 'excerpt', 'content', ]
+       
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter title'}),
             'excerpt': TextInput(attrs={'placeholder': 'Enter excerpt'}),
@@ -30,5 +32,5 @@ class SignUpForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     bio = forms.CharField(label ="About ", max_length=155 )
-    
+
     

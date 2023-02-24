@@ -6,7 +6,22 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .models import Author,Post
 from .forms import PostForm, LoginForm, SignUpForm
 from django.utils.text import slugify
+import dropbox
+from dropbox.files import WriteMode
+from django.conf import settings
+import io
+import json
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
+
+# Set up Cloudinary credentials
+cloudinary.config(
+  cloud_name = "dbd7rcwwx",
+  api_key = "925952713517876",
+  api_secret = "SoB33wLiLb8JSLJ1OKlpfSW3bfY"
+)
 
 latest_posts =  Post.objects.all().order_by("-id")[:7]
 
@@ -114,7 +129,6 @@ def test_main(request):
 
 def create_post(request):
 
-    
     form = PostForm()
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -123,34 +137,29 @@ def create_post(request):
                     author_id = request.session.get('author')
 
                     author = Author.objects.get(id=author_id)
-
-                    #creating author session 
-                 #   request.session['author'] = author
-
                     title = form.cleaned_data.get('title')
                     keynote = form.cleaned_data.get('excerpt')
-                    imager = form.cleaned_data.get('image')
+                    image = form.cleaned_data.get('image')
                     content = form.cleaned_data.get('content')
-                   
                     original_slug = slugify(title)
                     unique_slug = original_slug
                     count = 1
-
                     while Post.objects.filter(slug=unique_slug).exists():
                         unique_slug = f'{original_slug}-{count}'
                         count += 1 
-
+    
+                 
                     new_post = form.save(commit=False) 
                     new_post.author = author
-                    new_post.image = form.cleaned_data['image']
+                    new_post.save()
+                    response = cloudinary.uploader.upload(image, public_id=f'images/{new_post.id}_{image.name}')
+                    new_post.image_url = response['url']
                     new_post.slug = unique_slug
-                    print("jeeezzz")
+                    print("Save successful ")
                     new_post.save()
 
-                    return redirect('home')
 
-
-            
+                    image_url = response['secure_url']
         else :
           print("damnnnn!!")
           print("Form errors:", form.errors)
