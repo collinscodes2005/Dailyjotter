@@ -38,7 +38,7 @@ button#hamburger-menu-button {
     padding: 4px;
     text-align: center;
     font-family: fangsong;
-    
+
 
   }
   
@@ -48,4 +48,8 @@ button#hamburger-menu-button {
 
 #all-posts{
   list-style: none;
+}
+
+a-post{
+  margin-right: 30px;
 }
