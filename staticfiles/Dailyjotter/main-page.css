@@ -23,6 +23,7 @@ button#hamburger-menu-button {
   #navigation {
     display: none;
   }
+  
   .img{
     border-radius: 50px;
     height: 200px;
@@ -33,7 +34,7 @@ button#hamburger-menu-button {
     position: absolute;
     top: 60px;
     right: 16px;
-    background-color: white;
+    background-color: black;
     list-style: devanagari;
     padding: 4px;
     text-align: center;

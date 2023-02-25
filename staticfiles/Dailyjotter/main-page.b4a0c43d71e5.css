@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+}
+
+button#hamburger-menu-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  button#hamburger-menu-button span {
+    display: block;
+    height: 2px;
+    width: 24px;
+    background-color: #000;
+    margin: 4px 0;
+  }
+  
+  #navigation {
+    display: none;
+  }
+  
+  .img{
+    border-radius: 50px;
+    height: 200px;
+    width: 120px;
+  }
+  #navigation.show {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    background-color: white;
+    list-style: devanagari;
+    padding: 4px;
+    text-align: center;
+    font-family: fangsong;
+
+
+  }
+  
+  #navigation li{
+  margin: 8px 0;
+}
+
+#all-posts{
+  list-style: none;
+}

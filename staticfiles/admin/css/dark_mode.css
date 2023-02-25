@@ -6,7 +6,7 @@
       --body-fg: #eeeeee;
       --body-bg: #121212;
       --body-quiet-color: #e0e0e0;
-      --body-loud-color: #ffffff;
+      --body-loud-color: black;
   
       --breadcrumbs-link-fg: #e0e0e0;
       --breadcrumbs-bg: var(--primary);
