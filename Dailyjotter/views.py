@@ -23,7 +23,7 @@ cloudinary.config(
   api_secret = "SoB33wLiLb8JSLJ1OKlpfSW3bfY"
 )
 
-latest_posts =  Post.objects.all().order_by("-id")[:7]
+latest_posts =  Post.objects.all().order_by("-id")[:11]
 
 # Create your views here.
 def indexPage(request):
