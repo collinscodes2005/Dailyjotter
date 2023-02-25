@@ -320,26 +320,26 @@ td{border-width:0 1px;}
 /* Colours
 --------------------------------------------------------------------------------------------------------------- */
 body{color:black; background-color:#202020/* Fallback incase a background image doesn't load */;}
-a{color:#8EC837;}
+a{color:white;}
 a:active, a:focus{background:transparent !important;}/* IE10 + 11 Bugfix - prevents grey background */
 hr, .borderedbox{border-color:#D7D7D7;}
 label span{color:#FF0000; background-color:inherit;}
-input:focus, textarea:focus, *:required:focus{border-color:#8EC837 !important;}
+input:focus, textarea:focus, *:required:focus{border-color:white !important;}
 
 .overlay{color:black; background-color:inherit;}
 .overlay::after{color:inherit; background-color:rgba(0,0,0,.55);}
 .overlay.light{color:#474747;}
 .overlay.light::after{background-color:rgba(255,255,255,.7);}
 
-.btn, .btn.inverse:hover{color:black; background-color:#8EC837; border-color:#8EC837;}
+.btn, .btn.inverse:hover{color:black; background-color:white; border-color:white;}
 .btn:hover, .btn.inverse{color:inherit; background-color:transparent; border-color:inherit;}
 
-.imgover:hover::before{background-color:rgba(142,200,55,.3);/* #8EC837 */}
+.imgover:hover::before{background-color:rgba(142,200,55,.3);/* white */}
 .imgover, .imgover:hover::after{color:black;}
 
 
 /* Rows */
-.row0, .row0 a{color:black; background-color:#8EC837;}
+.row0, .row0 a{color:black; background-color:white;}
 .row1{color:#474747; background-color:black;}
 .row2{color:#474747; background-color:#F4F4F4;}
 .row3{color:#474747; background-color:black;}
@@ -357,20 +357,20 @@ input:focus, textarea:focus, *:required:focus{border-color:#8EC837 !important;}
 
 /* Contact Details */
 #ctdetails ul li div i{color:inherit; background-color:rgba(0,0,0,.03);}
-#ctdetails ul li div:hover i{color:black; background-color:#8EC837;}
+#ctdetails ul li div:hover i{color:black; background-color:white;}
 
 
 /* Header */
-#header{color:black; background-color:#8EC837;}
+#header{color:black; background-color:white;}
 #header #logo a{color:inherit;}
 
 
 /* Content */
-#introblocks figure figcaption > a{color:black; background-color:#8EC837;}
+#introblocks figure figcaption > a{color:black; background-color:white;}
 
 .points{}
 .points li a i{color:inherit; background-color:black;}
-.points li:hover a i{color:black; background-color:#8EC837;}
+.points li:hover a i{color:black; background-color:white;}
 
 #services article{border-color:rgba(0,0,0,.05);}
 #services article:hover{color:inherit; background-color:rgba(0,0,0,.02);}
@@ -387,12 +387,12 @@ input:focus, textarea:focus, *:required:focus{border-color:#8EC837 !important;}
 
 #footer input, #footer button{border-color:transparent;}
 #footer input{color:black; background-color:rgba(255,255,255,.2);}
-#footer input:focus{background-color:#8EC837;}
-#footer button{color:black; background-color:#8EC837;}
+#footer input:focus{background-color:white;}
+#footer button{color:black; background-color:white;}
 #footer button:hover{color:inherit; background-color:transparent; border-color:inherit;}
 
 #footer nav a{color:black;}
-#footer nav a:hover{color:#8EC837;}
+#footer nav a:hover{color:white;}
 
 
 /* Copyright */
@@ -402,20 +402,20 @@ input:focus, textarea:focus, *:required:focus{border-color:#8EC837 !important;}
 /* Navigation */
 #mainav li a{color:inherit;}
 #mainav .active a, #mainav a:hover, #mainav li:hover > a{color:#000000; background-color:inherit;}
-#mainav li li a, #mainav .active li a{color:black; background-color:rgba(142,200,55,.5); border-color:rgba(142,200,55,.5);/* #8EC837 */}
-#mainav li li:hover > a, #mainav .active .active > a{color:black; background-color:#8EC837;}
+#mainav li li a, #mainav .active li a{color:black; background-color:rgba(142,200,55,.5); border-color:rgba(142,200,55,.5);/* white */}
+#mainav li li:hover > a, #mainav .active .active > a{color:black; background-color:white;}
 #mainav form select{color:#474747; background-color:black; border-color:#D7D7D7;}
 
 #breadcrumb *{color:black; background-color:inherit;}
-#breadcrumb li:last-child a{color:#8EC837;}
+#breadcrumb li:last-child a{color:white;}
 
 .container .sidebar nav a{color:inherit; border-color:#D7D7D7;}
-.container .sidebar nav a:hover{color:#8EC837;}
+.container .sidebar nav a:hover{color:white;}
 
 .pagination a, .pagination strong{border-color:#D7D7D7;}
-.pagination .current *{color:black; background-color:#8EC837;}
+.pagination .current *{color:black; background-color:white;}
 
-#backtotop{color:black; background-color:#8EC837;}
+#backtotop{color:black; background-color:white;}
 
 
 /* Tables + Comments */
