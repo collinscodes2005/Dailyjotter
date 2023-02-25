@@ -10,6 +10,7 @@ urlpatterns = [
     path('signup/', views.SignUp),
     path('profile/', views.Profile, name="Profile"),
     path('update_profile_image/', views.update_profile_image, name='update_profile_image'),
+    path('home/<str:slug>', views.post_detail, name="post-detail")
 ]
 
 

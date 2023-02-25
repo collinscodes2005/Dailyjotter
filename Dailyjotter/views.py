@@ -193,8 +193,6 @@ def update_profile_image(request):
             cloudinary.uploader.destroy(public_id)
             print("trying to delete")
 
-
-
         if 'image' in request.FILES:
             image = request.FILES['image']
             response = cloudinary.uploader.upload(image, public_id=f'images/{author.id}_{image.name}')
@@ -203,3 +201,12 @@ def update_profile_image(request):
         return redirect('Profile')  
     else:
         return redirect('Profile')  
+
+def post_detail(request, slug):
+   post = Post.objects.get(slug=slug)
+
+
+   return render(request, "Dailyjotter/post-detail.html", {
+      "post" : post
+   })
+   
