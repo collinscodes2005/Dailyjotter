@@ -16,7 +16,7 @@
     
     <fieldset>
       <legend></legend>
-
+      {{err}}
       {% for field in form %}
       <label for="{{field.id_for_label}}">{{field.label_tag}}</label>
       <input type="{% if field.name == 'password' %}password{% else %}{{field.input_type}}{% endif %}" id="{{field.id_for_label}}" name="{{field.name}}">

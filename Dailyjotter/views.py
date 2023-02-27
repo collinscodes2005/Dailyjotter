@@ -95,11 +95,11 @@ def SignUp(request):
             if username in usernames and password in passwords :
                 print("Cant create account ")
                 return render(request, "Dailyjotter/sign-up.html", {'form' : form,
-                'err' : "user exists "})
+                'err' : "user exists, enter different detail"})
 
             else :
                 new_user.save()
-                return render(request, "Dailyjotter/login.html", { 'form' : logForm,
+                return render(request, "Dailyjotter/index.html", { 'form' : logForm,
                 'success': "User created, login now"
                 })
 
