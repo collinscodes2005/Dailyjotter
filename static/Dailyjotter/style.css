@@ -7,7 +7,7 @@
   body {
     font-family: 'Nunito', sans-serif;
     margin-top: 100px;
-    color: #384047;
+    background: linear-gradient(to bottom right, #99d6ff, #005ce6);
   }
   
   form {
@@ -78,16 +78,16 @@
 
   button {
     padding: 19px 39px 18px 39px;
-    color: #FFF;
-    background-color: #4d4d4d;
+    color: white;
+    background-color: #99d6ff;
     font-size: 18px;
     text-align: center;
     font-style: normal;
     border-radius: 5px;
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid #99d6ff;
     border-width: 1px 1px 3px;
-    box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+    box-shadow: 0 -1px 0 #99d6ff inset;
     margin-bottom: 10px;
   }
   fieldset {
