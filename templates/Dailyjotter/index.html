@@ -1,0 +1,33 @@
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+ 
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'Dailyjotter/style.css' %}">
+</head>
+<h2 class="title_page">Dailyjotter</h2>
+<body>
+
+  <form action="/login/" method="post">
+  {% csrf_token %}
+    <h1>Login</h1>
+    
+    <fieldset>
+      <legend></legend>
+        <label>{{message}}</label>
+      {% for field in form %}
+      <label for="{{field.id_for_label}}">{{field.label_tag}}</label>
+      <input type="{% if field.name == 'password' %}password{% else %}{{field.input_type}}{% endif %}" id="{{field.id_for_label}}" name="{{field.name}}">
+      {% endfor %}
+
+    </fieldset>
+
+    <button type="submit">Login</button>
+
+    <h4>Don't have an account?<a href="/signup/">Signup</h4>
+  </form>
+  
+</body>
+</html>

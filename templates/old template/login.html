@@ -1,0 +1,42 @@
+
+{% extends "./base.html" %}
+
+
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "Dailyjotter/login.css" %}">
+{% endblock %}
+{% block content %}
+<body>
+<section id="log">
+   
+        <div class="sic">
+            <form action="/login/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h3>{{message}}</h3>
+                    <h3>{{success}}</h3>
+
+                {% for field in form %}
+                    
+                        <label for="{{ field.label_for }}">{{ field.label }}</label>
+                
+                        {{ field }}
+                        
+                   
+                {% endfor %}
+                <button class="submit" type="submit">Submit</button>
+
+                <h4>Don't have an account?<a href="/signup/">Signup</h4>
+            </div>
+            </form>
+        </div>
+
+</section>
+</body>
+
+
+{% endblock %}
+
+

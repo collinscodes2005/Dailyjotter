@@ -38,7 +38,7 @@ input, select, textarea {
 
 button[type="submit"] {
     padding: 0.5rem 1rem;
-    background-color: black;
+    background-color: white;
     color: white;
     border: none;
     border-radius: 5px;

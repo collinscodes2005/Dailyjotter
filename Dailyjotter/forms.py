@@ -20,8 +20,8 @@ class PostForm(forms.ModelForm):
 
 '''Login form '''
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Username', max_length=100)
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    username = forms.CharField(label='Name :', max_length=100)
+    password = forms.CharField(label='Password :', widget=forms.PasswordInput)
 
 
 
@@ -31,6 +31,6 @@ class SignUpForm(forms.Form):
     surname = forms.CharField(label = "Lastname", max_length=120)
     username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    bio = forms.CharField(label ="About ", max_length=155 )
+    Biography = forms.CharField(label ="About ", max_length=155 )
 
     

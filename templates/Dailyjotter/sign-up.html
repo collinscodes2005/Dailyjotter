@@ -1,40 +1,33 @@
-
-{% extends "./base.html" %}
-
-
 {% load static %}
-
-{% block css_files %}
-<link rel="stylesheet" href="{% static "Dailyjotter/sign-up.css" %}">
-
-{% endblock %}
-{% block content %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+ 
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'Dailyjotter/style.css' %}">
+</head>
+<h2 class="title_page">Dailyjotter</h2>
 <body>
-<section id="log">
-   
-        <div class="sic">
-            <form action="/signup/" method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                   <h3> {{err}} </h3>
-                  <h3>  {{success}}</h3>
-                {% for field in form %}
-                    
-                        <label for="{{ field.label_for }}">{{ field.label }}</label>
-                
-                        {{ field }}
-                        
-                   
-                {% endfor %}
-                <button class="submit" type="submit">Submit</button>
-            </div>
-            </form>
-        </div>
 
-</section>
+  <form action="/signup/" method="post">
+  {% csrf_token %}
+    <h1>Register</h1>
+    
+    <fieldset>
+      <legend></legend>
+
+      {% for field in form %}
+      <label for="{{field.id_for_label}}">{{field.label_tag}}</label>
+      <input type="{% if field.name == 'password' %}password{% else %}{{field.input_type}}{% endif %}" id="{{field.id_for_label}}" name="{{field.name}}">
+      {% endfor %}
+
+    </fieldset>
+
+    <button type="submit">Register</button>
+  </form>
+  
 </body>
 
 
-{% endblock %}
-
-
+</html>

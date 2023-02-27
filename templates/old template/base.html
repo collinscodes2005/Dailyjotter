@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %} {% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href=" {% static 'Dailyjotter/base.css' %}">
+        <link rel="stylesheet" href=" {% static 'Dailyjotter/style.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+	
+        <!-- StyleSheet -->
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{% static 'DailyJotter/css/bootstrap.css' %}">
+        <!-- Magnific Popup -->
+          <link rel="stylesheet" href="{% static 'DailyJotter/css/magnific-popup.min.css' %}">
+        <!-- Font Awesome -->
+          <link rel="stylesheet" href= "{% static 'DailyJotter/css/font-awesome.css' %}">
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="{% static 'DailyJotter/css/jquery.fancybox.min.css' %}">
+        <!-- Themify Icons -->
+          <link rel="stylesheet" href="{% static 'DailyJotter/css/themify-icons.css' %}">
+        <!-- Nice Select CSS -->
+          <link rel="stylesheet" href="{% static 'DailyJotter/css/niceselect.css' %}">
+        <!-- Animate CSS -->
+          <link rel="stylesheet" href="{% static 'DailyJotter/css/animate.css' %}">
+        <!-- Flex Slider CSS -->
+          <link rel="stylesheet" href="{% static 'DailyJotter/css/flex-slider.min.css' %}">
+        <!-- Owl Carousel -->
+          <link rel="stylesheet" href="{% static 'DailyJotter/css/owl-carousel.css' %}">
+        <!-- Slicknav -->
+          <link rel="stylesheet" href="{% static 'DailyJotter/css/slicknav.min.css' %}">
+        
+        <!-- Eshop StyleSheet -->
+        <link rel="stylesheet" href="{% static 'Dailyjotter/css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'Dailyjotter/style.css' %}">
+          <link rel="stylesheet" href="{% static 'Dailyjotter/css/responsive.css' %}">
+
+        {% block css_files %}{% endblock %}
+    </head>
+    <header>
+    
+    </header>
+    <body>
+ 
+    
+  {% block content %}
+
+
+  {% endblock %}
+
+    </body>
+{% block js_files %}
+
+
+
+{% endblock %}
+</html>

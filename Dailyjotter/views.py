@@ -29,7 +29,7 @@ latest_posts =  Post.objects.all().order_by("-id")[:17]
 def indexPage(request):
 
 
-       return render(request, "Dailyjotter/login.html")
+       return render(request, "Dailyjotter/index.html")
 
 
 def loginView(request):
@@ -57,9 +57,9 @@ def loginView(request):
             else:
                 context = { 'message' : "User not found, Please retry",
                             'form' : form}
-                return render(request, "Dailyjotter/login.html", context)
+                return render(request, "Dailyjotter/index.html", context)
 
-   return render(request, "Dailyjotter/login.html", { 'form' : form})
+   return render(request, "Dailyjotter/index.html", { 'form' : form})
 
 
 
