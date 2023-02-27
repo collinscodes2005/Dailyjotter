@@ -120,15 +120,19 @@
         Social Media Post Feed
     </div>
     <div class="container">
-        {%for post in posts%}
+        {% comment %} {%for post in posts%}
         <div class="post">
             <img src="{{post.author.image_url}}" alt="Profile Image" class="profile-image">
             <div class="username">{{post.author.username}}</div>
             <h2 class="post-title">{{post.title}}</h2>
             <img src="{{post.image_url}}" alt="{{poat.author.firstname}} -- {{post.title}}" class="post-image">
         
-        </div>
-        {% endfor %}
+        </div> {% endcomment %}
+
+
+        {% comment %} {% endfor %} {% endcomment %}
+
+        UNDER CONSTRUCTION 
     </div>
 </body>
 </html>
