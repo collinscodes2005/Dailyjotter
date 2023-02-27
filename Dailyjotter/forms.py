@@ -16,13 +16,11 @@ class PostForm(forms.ModelForm):
         }
         
         exclude = ['slug']
-        
 
 '''Login form '''
 class LoginForm(forms.Form):
     username = forms.CharField(label='Name :', max_length=100)
     password = forms.CharField(label='Password :', widget=forms.PasswordInput)
-
 
 
 '''Sign up form '''
